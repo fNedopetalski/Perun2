@@ -38,7 +38,17 @@ public class Heroi : MonoBehaviour
 
         GetComponent<Rigidbody2D>().velocity = velocidade;
         animator.SetFloat("VelocidadeVertical", GetComponent<Rigidbody2D>().velocity.y);
-        
+
+        if (noChao && Input.GetKey(KeyCode.Space) && Pause.mostrarPause == false)
+        {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
+            animator.SetBool("NoChao", false);
+
+            var audio = GetComponent<AudioSource>();
+            if (!GetComponent<AudioSource>().isPlaying)
+                audio.Play();
+        }
+
         //Para colocar som de passos
         /*if (Mathf.Abs(axis) > 0 && noChao)
         {
@@ -64,15 +74,7 @@ public class Heroi : MonoBehaviour
             Invoke("TelaGameOver", 1f);
             fadeOut = true;
         }
-        if (noChao && Input.GetKey(KeyCode.Space) && Pause.mostrarPause == false)
-        {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 110));
-            animator.SetBool("NoChao", false);
-
-            var audio = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-                audio.Play();
-        }
+        
     }
     void Vire()
     {
