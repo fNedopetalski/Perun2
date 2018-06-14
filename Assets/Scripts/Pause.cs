@@ -68,14 +68,14 @@ public class Pause : MonoBehaviour {
         mostrarParadigmas = true;
         Time.timeScale = 0f;
 
-        if(BauImperativo.imperativaText)
-            Invoke("aparecerImperativa", 0.3f);
-        if (BauOrientadaAObjeto.OrientadaAObjetoText)
-            Invoke("aparecerOrientadaaObjeto", 0.3f);
-        if (BauLogica.logicaText)
-            Invoke("aparecerLogica", 0.3f);
-        if (BauFuncional.funcionalText)
-            Invoke("aparecerFuncional", 0.3f);
+        if (BauImperativo.bauImperativoAberto)
+            aparecerImperativa();
+        if (BauOrientadaAObjeto.bauOrientadaObjetoAberto)
+            aparecerOrientadaaObjeto();
+        if (BauLogica.bauLogicaAberto)
+            aparecerLogica();
+        if (BauFuncional.bauFuncionalAberto)
+            aparecerFuncional();
 
     }
 
@@ -95,9 +95,12 @@ public class Pause : MonoBehaviour {
 
     void aparecerImperativa()
     {
-        ImperativaText.SetActive(true);
-        mostrarImperativa = true;
-        Time.timeScale = 0f;
+        if(!mostrarImperativa)
+        {
+            ImperativaText.SetActive(true);
+            mostrarImperativa = true;
+            Time.timeScale = 0f;
+        }
     }
 
     void aparecerOrientadaaObjeto()
