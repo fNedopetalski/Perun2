@@ -81,8 +81,10 @@ public class Pause : MonoBehaviour {
 
     public void FecharParadigmas()
     {
-        animator.SetBool("FecharParadigmas", true);
-        animator.SetBool("AbrirParadigmas", false);
+        MostrarParadigmas.SetActive(false);
+        mostrarParadigmas = false;
+        Time.timeScale = 0f;
+
     }
 
     public void RetornaMenu()
