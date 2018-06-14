@@ -13,7 +13,7 @@ public class Heroi : MonoBehaviour
     public float MaxVelocidade = 10;   
     public Transform ChaoCheck;    
     public LayerMask OQueEChao;
-    private Collider2D collider;
+    private new Collider2D collider;
 
     // Use this for initialization
     void Start()
@@ -48,24 +48,7 @@ public class Heroi : MonoBehaviour
             if (!GetComponent<AudioSource>().isPlaying)
                 audio.Play();
         }
-
-        //Para colocar som de passos
-        /*if (Mathf.Abs(axis) > 0 && noChao)
-        {
-
-            var audio = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-            {
-                audio.Play();
-            }
-        }
-        else
-        {
-            GetComponent<AudioSource>().Stop();
-        }*/
-
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -75,6 +58,13 @@ public class Heroi : MonoBehaviour
             fadeOut = true;
         }
         
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "portal")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
     void Vire()
     {
