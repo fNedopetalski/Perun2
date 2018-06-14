@@ -9,8 +9,13 @@ public class Pause : MonoBehaviour {
 
     public GameObject PainelPause;
     public GameObject MostrarParadigmas;
+    public GameObject ImperativaText;
+    public GameObject OrientadaText;
+    public GameObject LogicaText;
+    public GameObject FuncionalText;
 
     public static bool mostrarPause = false;
+    public static bool mostrarParadigmas = false;
     private bool mostrarImperativa = false;
     private bool mostrarOO = false;
     private bool mostrarFuncional = false;
@@ -33,7 +38,7 @@ public class Pause : MonoBehaviour {
         {
             Resume();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (mostrarParadigmas == true && Input.GetKeyDown(KeyCode.Escape))
         {
             FecharParadigmas();
         }
@@ -59,12 +64,25 @@ public class Pause : MonoBehaviour {
 
     public void AbrirParadigmas()
     {
+        MostrarParadigmas.SetActive(true);
+        mostrarParadigmas = true;
+        Time.timeScale = 0f;
+
+        if(BauImperativo.imperativaText)
+            Invoke("aparecerImperativa", 0.3f);
+        if (BauOrientadaAObjeto.OrientadaAObjetoText)
+            Invoke("aparecerOrientadaaObjeto", 0.3f);
+        if (BauLogica.logicaText)
+            Invoke("aparecerLogica", 0.3f);
+        if (BauFuncional.funcionalText)
+            Invoke("aparecerFuncional", 0.3f);
 
     }
 
     public void FecharParadigmas()
     {
-
+        animator.SetBool("FecharParadigmas", true);
+        animator.SetBool("AbrirParadigmas", false);
     }
 
     public void RetornaMenu()
@@ -72,34 +90,32 @@ public class Pause : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    /**
-    public void aparecerImperativa()
+    void aparecerImperativa()
     {
-        MostarImperativa.SetActive(true);
+        ImperativaText.SetActive(true);
         mostrarImperativa = true;
         Time.timeScale = 0f;
     }
 
-    public void aparecerOrientadaaObjeto()
+    void aparecerOrientadaaObjeto()
     {
-        MostrarOO.SetActive(true);
+        OrientadaText.SetActive(true);
         mostrarOO = true;
         Time.timeScale = 0f;
     }
 
-    public void aparecerFuncional()
+    void aparecerFuncional()
     {
-        MostrarFuncional.SetActive(true);
+        FuncionalText.SetActive(true);
         mostrarFuncional = true;
         Time.timeScale = 0f;
     }
 
-    public void aparecerLogica()
+    void aparecerLogica()
     {
-        MostrarLogica.SetActive(true);
+        LogicaText.SetActive(true);
         mostrarLogica = true;
         Time.timeScale = 0f;
     }
-    **/
 
 }
