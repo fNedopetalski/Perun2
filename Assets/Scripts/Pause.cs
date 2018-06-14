@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
+    Animator animator;
+
     public GameObject PainelPause;
-    public GameObject MostarImperativa;
-    public GameObject MostrarOO;
-    public GameObject MostrarFuncional;
-    public GameObject MostrarLogica;
+    public GameObject MostrarParadigmas;
 
     public static bool mostrarPause = false;
     private bool mostrarImperativa = false;
@@ -31,9 +31,12 @@ public class Pause : MonoBehaviour {
 
         if (mostrarPause == true && Input.GetKeyDown(KeyCode.P))
         {
-            Voltar();
+            Resume();
         }
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FecharParadigmas();
+        }
         
     }
 
@@ -47,6 +50,29 @@ public class Pause : MonoBehaviour {
         }
     }
 
+    public void Resume()
+    {
+        PainelPause.SetActive(false);
+        mostrarPause = false;
+        Time.timeScale = 1f;
+    }
+
+    public void AbrirParadigmas()
+    {
+
+    }
+
+    public void FecharParadigmas()
+    {
+
+    }
+
+    public void RetornaMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    /**
     public void aparecerImperativa()
     {
         MostarImperativa.SetActive(true);
@@ -74,11 +100,6 @@ public class Pause : MonoBehaviour {
         mostrarLogica = true;
         Time.timeScale = 0f;
     }
+    **/
 
-    void Voltar()
-    {
-        PainelPause.SetActive(false);
-        mostrarPause = false;
-        Time.timeScale = 1f;
-    }
 }
