@@ -87,6 +87,7 @@ public class Pause : MonoBehaviour {
 
     public void RetornaMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
