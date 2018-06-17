@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Pause : MonoBehaviour {
 
     Animator animator;
+    public AudioMixer audioMixerMusicas, audioMixerSons;
 
     public GameObject PainelPause;
     public GameObject MostrarParadigmas;
@@ -38,7 +38,7 @@ public class Pause : MonoBehaviour {
         {
             Resume();
         }
-        if (mostrarParadigmas == true && Input.GetKeyDown(KeyCode.Escape))
+        if (mostrarParadigmas == true && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return)))
         {
             FecharParadigmas();
         }
@@ -59,6 +59,7 @@ public class Pause : MonoBehaviour {
     {
         PainelPause.SetActive(false);
         mostrarPause = false;
+        FecharParadigmas();
         Time.timeScale = 1f;
     }
 
@@ -91,6 +92,16 @@ public class Pause : MonoBehaviour {
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void DefinirVolumeMusica(float volume)
+    {
+        audioMixerMusicas.SetFloat("volume", volume);
+    }
+
+    public void DefinirVolumeSons(float volume)
+    {
+        audioMixerSons.SetFloat("volume", volume);
     }
 
     void aparecerImperativa()

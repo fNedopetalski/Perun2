@@ -29,14 +29,19 @@ public class BauFuncional : MonoBehaviour
         if (personagemPerto && Input.GetKeyDown(KeyCode.E) && (ColetarItens.qntChaves > 0) && !bauAberto)
         {
             DiminuirChaves();
-            animator.SetBool("abrirBau", true);
-            funcionalText = true;
-            bauAberto = true;
-            var audioBau = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-                audioBau.Play();
-            bauFuncionalAberto = true;
+            AbriuBau();
         }
+    }
+    void AbriuBau()
+    {
+        animator.SetBool("abrirBau", true);
+        funcionalText = true;
+        bauAberto = true;
+        var audioBau = GetComponent<AudioSource>();
+        if (!GetComponent<AudioSource>().isPlaying)
+            audioBau.Play();
+        bauFuncionalAberto = true;
+        TextosParadigmas.QuantidadeParadigmas = TextosParadigmas.QuantidadeParadigmas + 1;
     }
     protected void DiminuirChaves()
     {

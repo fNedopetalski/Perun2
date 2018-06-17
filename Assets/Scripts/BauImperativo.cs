@@ -30,14 +30,19 @@ public class BauImperativo : MonoBehaviour
         if (personagemPerto && Input.GetKeyDown(KeyCode.E) && (ColetarItens.qntChaves > 0) && !bauAberto)
         {
             DiminuirChaves();
-            animator.SetBool("abrirBau", true);
-            imperativaText = true;
-            bauAberto = true;
-            var audioBau = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-                audioBau.Play();
-            bauImperativoAberto = true;
+            AbriuBau();
         }
+    }
+    void AbriuBau()
+    {
+        animator.SetBool("abrirBau", true);
+        imperativaText = true;
+        bauAberto = true;
+        var audioBau = GetComponent<AudioSource>();
+        if (!GetComponent<AudioSource>().isPlaying)
+            audioBau.Play();
+        bauImperativoAberto = true;
+        TextosParadigmas.QuantidadeParadigmas = TextosParadigmas.QuantidadeParadigmas + 1;
     }
     protected void DiminuirChaves()
     {

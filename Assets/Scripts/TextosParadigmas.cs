@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TextosParadigmas : MonoBehaviour
 {
@@ -9,15 +8,24 @@ public class TextosParadigmas : MonoBehaviour
     public GameObject LogicaText;
     public GameObject FuncionalText;
     public GameObject ImperativaText;
+    public Text QuantidadeParadigmasText;
+    public static int QuantidadeParadigmas;
 
     private bool abertoImperativa = false;
     private bool abertoOrientada = false;
     private bool abertoLogica = false;
     private bool abertoFuncional = false;
 
+    private void Start()
+    {
+        QuantidadeParadigmas = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        QuantidadeParadigmasText.text = QuantidadeParadigmas.ToString();
 
         if (BauImperativo.imperativaText)
         {

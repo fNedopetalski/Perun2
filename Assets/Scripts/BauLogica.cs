@@ -30,14 +30,19 @@ public class BauLogica : MonoBehaviour
         if (personagemPerto && Input.GetKeyDown(KeyCode.E) && (ColetarItens.qntChaves > 0) && !bauAberto)
         {
             DiminuirChaves();
-            animator.SetBool("abrirBau", true);
-            logicaText = true;
-            var audioBau = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-                audioBau.Play();
-            bauAberto = true;
-            bauLogicaAberto = true;
+            AbriuBau();
         }
+    }
+    void AbriuBau()
+    {
+        animator.SetBool("abrirBau", true);
+        logicaText = true;
+        var audioBau = GetComponent<AudioSource>();
+        if (!GetComponent<AudioSource>().isPlaying)
+            audioBau.Play();
+        bauAberto = true;
+        bauLogicaAberto = true;
+        TextosParadigmas.QuantidadeParadigmas = TextosParadigmas.QuantidadeParadigmas + 1;
     }
     protected void DiminuirChaves()
     {

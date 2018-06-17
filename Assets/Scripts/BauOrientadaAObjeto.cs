@@ -29,14 +29,19 @@ public class BauOrientadaAObjeto : MonoBehaviour
         if (personagemPerto && Input.GetKeyDown(KeyCode.E) && (ColetarItens.qntChaves > 0) && !bauAberto)
         {
             DiminuirChaves();
-            animator.SetBool("abrirBau", true);
-            OrientadaAObjetoText = true;
-            var audioBau = GetComponent<AudioSource>();
-            if (!GetComponent<AudioSource>().isPlaying)
-                audioBau.Play();
-            bauAberto = true;
-            bauOrientadaObjetoAberto = true;
+            AbriuBau();
         }
+    }
+    void AbriuBau()
+    {
+        animator.SetBool("abrirBau", true);
+        OrientadaAObjetoText = true;
+        var audioBau = GetComponent<AudioSource>();
+        if (!GetComponent<AudioSource>().isPlaying)
+            audioBau.Play();
+        bauAberto = true;
+        bauOrientadaObjetoAberto = true;
+        TextosParadigmas.QuantidadeParadigmas = TextosParadigmas.QuantidadeParadigmas + 1;
     }
     protected void DiminuirChaves()
     {
