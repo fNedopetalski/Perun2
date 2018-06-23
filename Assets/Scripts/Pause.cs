@@ -31,7 +31,7 @@ public class Pause : MonoBehaviour {
     {
         if (mostrarPause == false && Input.GetKeyDown(KeyCode.P))
         {
-            Invoke("aparecePause", 0.3f);
+            Invoke("AparecePause", 0.3f);
         }
 
         if (mostrarPause == true && Input.GetKeyDown(KeyCode.P))
@@ -45,7 +45,7 @@ public class Pause : MonoBehaviour {
         
     }
 
-    void aparecePause()
+    void AparecePause()
     {
         if (!mostrarPause)
         {
@@ -70,13 +70,13 @@ public class Pause : MonoBehaviour {
         Time.timeScale = 0f;
 
         if (BauImperativo.bauImperativoAberto)
-            aparecerImperativa();
+            AparecerImperativa();
         if (BauOrientadaAObjeto.bauOrientadaObjetoAberto)
-            aparecerOrientadaaObjeto();
+            AparecerOrientadaaObjeto();
         if (BauLogica.bauLogicaAberto)
-            aparecerLogica();
+            AparecerLogica();
         if (BauFuncional.bauFuncionalAberto)
-            aparecerFuncional();
+            AparecerFuncional();
 
     }
 
@@ -104,7 +104,7 @@ public class Pause : MonoBehaviour {
         audioMixerSons.SetFloat("volume", volume);
     }
 
-    void aparecerImperativa()
+    void AparecerImperativa()
     {
         if(!mostrarImperativa)
         {
@@ -114,21 +114,21 @@ public class Pause : MonoBehaviour {
         }
     }
 
-    void aparecerOrientadaaObjeto()
+    void AparecerOrientadaaObjeto()
     {
         OrientadaText.SetActive(true);
         mostrarOO = true;
         Time.timeScale = 0f;
     }
 
-    void aparecerFuncional()
+    void AparecerFuncional()
     {
         FuncionalText.SetActive(true);
         mostrarFuncional = true;
         Time.timeScale = 0f;
     }
 
-    void aparecerLogica()
+    void AparecerLogica()
     {
         LogicaText.SetActive(true);
         mostrarLogica = true;
